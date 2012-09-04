@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title>Resume</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/bootstrap-responsive.css" />
+        <link rel="stylesheet" href="css/docs.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" />
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <a class="brand" href="#">Resume</a>
+                <ul class="nav">
+                    <li><a href="index.html">ホーム</a></li>
+                    <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">MyResume
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li id="showResume"><a href="#">MyResume表示</a></li>
+                        <li id="editResume"><a href="#">MyResume編集</a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="container">
+            <header class="jumbotron subhead">
+            <h1>Resume</h1>
+            </header>
+
+            <section id="personalDataSection">
+            <div class="page-header">
+                <h1>Personal Data</h1>
+            </div>
+
+            <div class="row">
+                <div class="span10" id="personalDataArea">
+                </div>
+            </div>
+            </section>
+
+            <section id="objectiveSection">
+            <div class="page-header">
+                <h1>Objective</h1>
+            </div>
+
+            <div class="row">
+                <div class="span10"  id="objectiveArea">
+                </div>
+            </div>
+            </section>
+
+            <section id="employmentSection">
+            <div class="page-header">
+                <h1>Employment</h1>
+            </div>
+
+            <div class="row">
+                <div id="employmentArea">
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div id="employmentModal">
+                <div class="modal hide fade" id="employmentEntryModal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h3>Employment登録</h3>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">取消</button>
+                        <button class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+
+                <div class="modal hide fade" id="employmentEditModal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h3>Employment編集</h3>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">取消</button>
+                        <button class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+
+                <div class="modal hide fade" id="employmentRemoveModal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h3>Employment削除</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>削除しますか？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">取消</button>
+                        <button class="btn btn-warning">削除</button>
+                    </div>
+                </div>
+            </div>
+
+
+            </section>
+
+            <section id="skillSection">
+            <div class="page-header">
+                <h1>Skills</h1>
+            </div>
+
+            <div class="row">
+                <div id="skillArea">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th class="span4">分類</th>
+                                <th class="span12">技術</th>
+                            </tr>
+                        </thead>
+                        <tbody id="skillArea">
+                            <tr>
+                                <td>OS</td>
+                                <td>Windows 2000, Windows XP, Windows Server 2000, SunOS, Red Hat ES4</td>
+                            </tr>
+                            <tr>
+                                <td>言語</td>
+                                <td>Java, ABAP/4, JavaScript</td>
+                            </tr>
+                            <tr>
+                                <td>ネットワーク</td>
+                                <td>HTTP, TCP, UDP</td>
+                            </tr>
+                            <tr>
+                                <td>ミドルウェア</td>
+                                <td>Oracle AS, Oracle ContentDB, Tomcat</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div id="skillModal">
+                <div class="modal hide fade" id="skillEntryModal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h3>Skill登録</h3>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">取消</button>
+                        <button class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+
+                <div class="modal hide fade" id="skillEditModal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h3>Skill編集</h3>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">取消</button>
+                        <button class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+
+                <div class="modal hide fade" id="skillRemoveModal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h3>Skill削除</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>削除しますか？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">取消</button>
+                        <button class="btn btn-warning">削除</button>
+                    </div>
+                </div>
+                </section>
+
+                <section id="workExperienceSection">
+                <div class="page-header">
+                    <h1>Work Experience</h1>
+                </div>
+
+                <div class="row">
+                    <div id="workExperienceArea">
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div id="workExperienceModal">
+                    <div class="modal hide fade" id="workExperienceEntryModal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h3>Work Experience登録</h3>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal">取消</button>
+                            <button class="btn btn-primary">保存</button>
+                        </div>
+                    </div>
+
+                    <div class="modal hide fade" id="workExperienceEditModal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h3>Work Experience編集</h3>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal">取消</button>
+                            <button class="btn btn-primary">保存</button>
+                        </div>
+                    </div>
+
+                    <div class="modal hide fade" id="workExperienceRemoveModal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h3>Work Experience削除</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>削除しますか？</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal">取消</button>
+                            <button class="btn btn-warning">削除</button>
+                        </div>
+                    </div>
+                    <div class="modal hide fade" id="workExperienceDetailModal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h3>Bシステム開発</h3>
+                        </div>
+
+                        <div class="modal-body">
+                            <p>Bシステム開発</p>
+                            <p>2011/11-2012/03</p>
+                            <p>aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa</p>
+                            <p>30人月</p>
+                            <p>7名</p>
+                            <p>PG</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn" data-dismiss="modal">閉じる</a>
+                        </div>
+                    </div>
+                </div>
+                </section>
+
+                <footer class="footer">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                </footer>
+            </div>
+
+            <!-- Template -->
+            <!-- Personal Data -->
+            <script type="text/x-jquery-tmpl" id="personalDataTemplate">
+                <table class="table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>名前</th>
+                            <td>${fullName()}</td>
+                        </tr>
+                        <tr>
+                            <th>年齢</th>
+                            <td>${age()}</td>
+                        </tr>
+                        <tr>
+                            <th>性別</th>
+                            {{if !gender}}
+                            <td></td>
+                            {{else gender == 'man'}}
+                            <td>男</td>
+                            {{else gender == 'woman'}}
+                            <td>女</td>
+                            {{else}}
+                            <td></td>
+                            {{/if}}
+                        </tr>
+                    </tbody>
+                </table>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="editPersonalDataTemplate">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="lastName">姓</label>
+                            <div class="controls">
+                                <input type="text" class"input-large" id="lastName" name="lastName" value="${lastName}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="firstName">名</label>
+                            <div class="controls">
+                                <input type="text" class"input-large" id="firstName" name="firstName" value="${firstName}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="birthday">誕生日</label>
+                            <div class="controls">
+                                <input type="text" class="input-medium" id="birthday" name="birthday" value="${birthday}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">性別</label>
+                            <div class="controls">
+                                <label class="radio inline">
+                                    {{if gender == 'man'}}
+                                    <input type="radio" name="gender" value="man" checked>
+                                    {{else}}
+                                    <input type="radio" name="gender" value="man">
+                                    {{/if}}
+                                    男
+                                </label>
+                                <label class="radio inline">
+                                    {{if gender == 'woman'}}
+                                    <input type="radio" name="gender" value="woman" checked>
+                                    {{else}}
+                                    <input type="radio" name="gender" value="woman" />
+                                    {{/if}}
+                                    女 
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </script>
+
+            <!-- Objective -->
+            <script type="text/x-jquery-tmpl" id="objectiveTemplate">
+                <p> ${objective} </p>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="editObjectiveTemplate">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div>
+                            <textarea rows="10" class="input-xxlarge" id="objective" name="objective"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="reset" class="btn">Cancel</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </script>
+
+            <!-- Employment -->
+            <script type="text/x-jquery-tmpl" id="employmentTemplate">
+                {{if isEdit}}
+                <div class="entryOperator">
+                    <a data-toggle="modal" href="#employmentEntryModal">新規追加</a>
+                </div>
+                {{/if}}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            {{if isEdit}}
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            {{/if}}
+                            <th class="span3">勤務先</th>
+                            <th class="span3">勤務期間</th>
+                            <th class="span6">事業内容</th>
+                            <th class="span2">資本金</th>
+                            <th class="span2">従業員数</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employmentItems">
+                    </tbody>
+                </table>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="employmentItemTemplate">
+                {{if $item.isEdit}}
+                <td>
+                    <div class="recordOperator">
+                        <div>
+                            <a data-toggle="modal" href="#employmentEditModal">修正</a>
+                        </div>
+                        <div>
+                            <a data-toggle="modal" href="#employmentRemoveModal">削除</a>
+                        </div>
+                    </div>
+                </td>
+                {{/if}}
+                <td>${company}</td>
+                <td>${firstDate}～${lastDate}</td>
+                <td>${businessLineup}</td>
+                <td>${capital}万円</td>
+                <td>${employees}名</td>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="employmentEditDetailTemplate">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="company">勤務先</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" id="company" name="company" value="${company}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="birthday">勤務期間</label>
+                            <div class="controls">
+                                <input type="text" class="input-medium" id="firstDate" name="firstDate" value="${firstDate}">
+                                ～
+                                <input type="text" class="input-medium" id="lastDate" name="lastDate" value="${lastDate}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">事業内容</label>
+                            <div class="controls">
+                                <textarea class="input-xlarge" id="businessLineup" rows="8" name="businessLineup">${businessLineup}</textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="capital">資本金</label>
+                            <div class="controls">
+                                <input type="text" class="input-small" id="capital" name="capital" value="${capital}">
+                                万円
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="employees">従業員数</label>
+                            <div class="controls">
+                                <input type="text" class="input-small" id="employees" name="employees" value="${employees}">
+                                人
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="employmentDetailTemplate">
+                <table class="table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>勤務先</th>
+                            <td>${company}</td>
+                        </tr>
+                        <tr>
+                            <th>勤務期間</th>
+                            <td>${firstDate}～${lastDate}</td>
+                        </tr>
+                        <tr>
+                            <th>事業内容</th>
+                            <td>${businessLineup}</td>
+                        </tr>
+                        <tr>
+                            <th>資本金</th>
+                            <td>${capital}万円</td>
+                        </tr>
+                        <tr>
+                            <th>従業員数</th>
+                            <td>${employees}名</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </script>
+
+            <!-- Skill -->
+            <script type="text/x-jquery-tmpl" id="skillTemplate">
+                {{if isEdit}}
+                <div class="entryOperator">
+                    <a data-toggle="modal" href="#skillEntryModal">新規追加</a>
+                </div>
+                {{/if}}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            {{if isEdit}}
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            {{/if}}
+                            <th class="span4">カテゴリー</th>
+                            <th class="span8">技術</th>
+                        </tr>
+                    </thead>
+                    <tbody id="skillItems">
+                    </tbody>
+                </table>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="skillItemTemplate">
+                {{if $item.isEdit}}
+                <td>
+                    <div class="recordOperator">
+                        <div>
+                            <a data-toggle="modal" href="#skillEditModal">修正</a>
+                        </div>
+                        <div>
+                            <a data-toggle="modal" href="#skillRemoveModal">削除</a>
+                        </div>
+                    </div>
+                </td>
+                {{/if}}
+                <td>${category}</td>
+                <td>${tech}</td>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="skillEditDetailTemplate">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="category">カテゴリー</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" id="category" name="category" value="${category}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">技術</label>
+                            <div class="controls">
+                                <textarea class="input-xlarge" id="tech" rows="8" name="tech">${tech}</textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="skillDetailTemplate">
+                <table class="table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>カテゴリー</th>
+                            <td>${category}</td>
+                        </tr>
+                        <tr>
+                            <th>技術</th>
+                            <td>${tech}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </script>
+
+
+            <!-- Work Experience -->
+            <script type="text/x-jquery-tmpl" id="workExperienceTemplate">
+                {{if isEdit}}
+                <div class="entryOperator">
+                    <a data-toggle="modal" href="#workExperienceEntryModal">新規追加</a>
+                </div>
+                {{/if}}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            {{if isEdit}}
+                            <th class="span1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            {{/if}}
+                            <th class="span2">期間</th>
+                            <th class="span3">プロジェクト名</th>
+                            <th class="span5">内容</th>
+                            <th class="span3">
+                                <div>担当工程</div>
+                                <div>役割</div>
+                                <div>規模</div>
+                                <div>人数</div>
+                            </th>
+                            <th class="span2">技術</th>
+                        </tr>
+                    </thead>
+                    <tbody id="workExperienceItems">
+                    </tbody>
+                </table>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="workExperienceItemTemplate">
+                {{if $item.isEdit}}
+                <td>
+                    <div class="recordOperator">
+                        <div>
+                            <a data-toggle="modal" href="#workExperienceEditModal">修正</a>
+                        </div>
+                        <div>
+                            <a data-toggle="modal" href="#workExperienceRemoveModal">削除</a>
+                        </div>
+                    </div>
+                </td>
+                {{/if}}
+                <td>${fromDate}～${toDate}</td>
+                <td>${title}</td>
+                <td>${content}</td>
+                <td>
+                    <div>${process}</div>
+                    <div>${role}</div>
+                    <div>${manMonth}人月</div>
+                    <div>${number}名</div>
+                </td>
+                <td>${useTech}</td>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="workExperienceEditDetailTemplate">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="title">プロジェクト名</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" id="title" name="title" value="${title}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="birthday">期間</label>
+                            <div class="controls">
+                                <input type="text" class="input-medium" id="fromDate" name="fromDate" value="${fromDate}">
+                                ～
+                                <input type="text" class="input-medium" id="toDate" name="toDate" value="${toDate}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">内容</label>
+                            <div class="controls">
+                                <textarea class="input-xlarge" id="content" rows="4" name="content">${content}</textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="process">担当工程</label>
+                            <div class="controls">
+                                <input type="text" class="input-large" id="process" name="process" value="${process}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="role">役割</label>
+                            <div class="controls">
+                                <input type="text" class="input-large" id="role" name="role" value="${role}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="manMonth">規模</label>
+                            <div class="controls">
+                                <input type="text" class="input-small" id="manMonth" name="manMonth" value="${manMonth}">
+                                人月
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="number">人数</label>
+                            <div class="controls">
+                                <input type="text" class="input-small" id="number" name="number" value="${number}">
+                                人
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">技術</label>
+                            <div class="controls">
+                                <textarea class="input-xlarge" id="useTech" rows="4" name="useTech">${useTech}</textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="workExperienceDetailTemplate">
+                <table class="table">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>プロジェクト名</th>
+                            <td>${title}</td>
+                        </tr>
+                        <tr>
+                            <th>勤務期間</th>
+                            <td>${fromDate}～${toDate}</td>
+                        </tr>
+                        <tr>
+                            <th>内容</th>
+                            <td>${content}</td>
+                        </tr>
+                        <tr>
+                            <th>担当工程</th>
+                            <td>${process}</td>
+                        </tr>
+                        <tr>
+                            <th>役割</th>
+                            <td>${role}</td>
+                        </tr>
+                        <tr>
+                            <th>規模</th>
+                            <td>${manMonth}人月</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="workExperienceTemplate">
+                <div class="span4">
+                    <h2>某IT企業向け/テレビ会議システム</h2>
+                    <p>テレビ会議の予約部分のバージョンアップ開発</p>
+                    <p>UT, IT</p>
+                    <p>2011/11-2012/03, 30人月, 7名</p>
+                    <p>プログラマー</p>
+                </div>
+            </script>
+
+            <script type="text/x-jquery-tmpl" id="workExperienceModalTemplate">
+            </script>
+
+            <!-- Script -->
+            <!-- library -->
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+
+            <!--
+            <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+            -->
+            <script src="lib/jquery.tmpl.js"></script>
+
+            <script src="lib/bootstrap.min.js"></script>
+            <script src="lib/spine.js"></script>
+            <script src="lib/ajax.js"></script>
+            <script src="lib/local.js"></script>
+
+            <!-- application-->
+            <script src="app/myappUtils.js"></script>
+            <script src="app/models/PersonalData.js"></script>
+            <script src="app/models/Employment.js"></script>
+            <script src="app/models/Skill.js"></script>
+            <script src="app/models/WorkExperience.js"></script>
+            <script src="app/models/Resume.js"></script>
+
+            <script src="app/controllers/Navbar.js"></script>
+            <script src="app/controllers/PersonalDatas.js"></script>
+            <script src="app/controllers/Employments.js"></script>
+            <script src="app/controllers/Skills.js"></script>
+            <script src="app/controllers/WorkExperiences.js"></script>
+            <script src="app/controllers/Resumes.js"></script>
+
+            <script src="app/app.js"></script>
+
+            <script type="text/javascript">
+                <!--
+                $(function() {
+                        $('#firstDate').datepicker();
+                        $('#lastDate').datepicker();
+                        $('#birthday').datepicker();
+                        });
+// -->
+</script>
+    </body>
+</html>

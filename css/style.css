@@ -1,0 +1,11 @@
+.birthday .year {
+    width: 65px;
+}
+
+.birthday .month {
+    width: 100px;
+}
+
+.birthday .date {
+    width: 50px;
+}
